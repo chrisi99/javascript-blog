@@ -111,7 +111,6 @@
       link.addEventListener('click', tagClickHandler);
     }
   };
-  
   addClickListenersToTags();
 
   const generateAuthors = function(){

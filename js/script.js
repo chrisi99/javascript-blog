@@ -115,4 +115,17 @@
     generateTitleLinks('[data-tags~="' + tag + '"]');
     console.log(generateTitleLinks);
   }
+  
+  const addClickListenersToTags = function(){
+    /* find all links to tags */
+    const allLinksToTags = document.querySelectorAll('a[href^="#tag-"]');
+    /* START LOOP: for each link */
+    for (let link of allLinksToTags) {
+      /* add tagClickHandler as event listener for that link */
+      link.addEventListener('click', tagClickHandler);
+    /* END LOOP: for each link */
+    }
+  };
+  
+  addClickListenersToTags();
 }

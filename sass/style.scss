@@ -93,29 +93,31 @@ body {
 
 /* Tags */
 .tags li{
-  display: inline-block;;
+  display: inline-block;
+  margin-left: 5px;
+  .tag-size-5{
+    font-size: 150%;
+  }
+  .tag-size-4{
+    font-size: 130%;
+  }
+  .tag-size-3{
+    font-size: 110%;
+  }
+  .tag-size-2{
+    font-size: 90%;
+  }
+  .tag-size-1{
+    font-size: 70%;
+  }
 }
-.tag-size-5{
-  font-size: 150%;
-}
-.tag-size-4{
-  font-size: 130%;
-}
-.tag-size-3{
-  font-size: 110%;
-}
-.tag-size-2{
-  font-size: 90%;
-}
-.tag-size-1{
-  font-size: 70%;
-}
+
 
 /* Authors */
 
 .authors {
   li {
-    margin-bottom: 12px;
+    margin-left: 5px;
   }
 }
 

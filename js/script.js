@@ -9,7 +9,7 @@
     tagsListSelector: '.tags .list',
     cloudClassCount: '5',
     cloudClassPrefix: 'tag-size-'
-  }
+  };
 
   const titleClickHandler = function(event){
     event.preventDefault();
@@ -20,6 +20,7 @@
     for(let activeLink of activeLinks){
       activeLink.classList.remove('active');
     }
+
     /* [DONE] add class 'active' to the clicked link */
     clickedElement.classList.add('active');
     /* [DONE] remove class 'active' from all articles */
@@ -27,6 +28,7 @@
     for(let activeArticle of activeArticles){
       activeArticle.classList.remove('active');
     }
+
     /* [DONE] get 'href' attribute from the clicked link */
     const articleSelector = clickedElement.getAttribute('href');
     /* [DONE] find the correct article using the selector (value of 'href' attribute) */
@@ -53,12 +55,12 @@
     }
 
     titleList.innerHTML = html;
-
     const links = document.querySelectorAll('.titles a');
     for(let link of links){
       link.addEventListener('click', titleClickHandler);
     }
   };
+
   generateTitleLinks();
 
   const calculateTagsParams = function(tags){
@@ -76,10 +78,11 @@
   const calculateTagClass = function(count, params){
     const normalizedCount = count - params.min;
     const normalizedMax = params.max - params.min;
-    const percentage = normalizedCount / normalizedMax
+    const percentage = normalizedCount / normalizedMax;
     const classNumber = Math.floor(percentage *(opt.cloudClassCount - 1) + 1);
     return opt.cloudClassPrefix + classNumber;
   };
+
   const generateTags = function(){
     /* [NEW] create a new variable allTags with an empty object */
     let allTags = {};
@@ -110,25 +113,21 @@
     }  
     /* [NEW] find list of tags in right column */
     const tagList = document.querySelector('.tags');
-
     const tagsParams = calculateTagsParams(allTags);
-
     /* [NEW] create variable for all links HTML code */
     let allTagsHTML = '';
-
     /* [NEW] START LOOP: for each tag in allTags: */
     for(let tag in allTags){
       /* [NEW] generate code of a link and add it to allTagsHTML */
       const tagLinkHTML ='<li>' + '<a class="' + calculateTagClass(allTags[tag], tagsParams) + '" href="#tag-' + tag + '" >' +  tag + '</a></li>';
       console.log(tagLinkHTML);
-      allTagsHTML += tagLinkHTML
+      allTagsHTML += tagLinkHTML;
     }
-    /* [NEW] END LOOP: for each tag in allTags: */
-
     /*[NEW] add HTML from allTagsHTML to tagList */
     tagList.innerHTML = allTagsHTML; 
-  }
-  generateTags()
+  };
+
+  generateTags();
 
   const tagClickHandler = function(event){
     event.preventDefault();
@@ -149,7 +148,7 @@
     }
     /* execute function "generateTitleLinks" with article selector as argument */
     generateTitleLinks('[data-tags~="' + tag + '"]');
-  }
+  };
   
   const addClickListenersToTags = function(){
     /* find all links to tags */
@@ -159,6 +158,7 @@
       link.addEventListener('click', tagClickHandler);
     }
   };
+
   addClickListenersToTags();
 
   const generateAuthors = function(){
@@ -186,17 +186,15 @@
     const authorsParams = calculateTagsParams(allAuthors);
     /* [NEW] create variable for all links HTML code */
     let allAuthorsHTML = '';
-
     /* [NEW] START LOOP: for each tag in allTags: */
     for(let author in allAuthors){
       /* [NEW] generate code of a link and add it to allTagsHTML */
       allAuthorsHTML += '<li>' + '<a class="' + calculateTagClass(allAuthors[author], authorsParams) + '" href="#data-author ' + author + '">' + author + '(' + allAuthors[author] + ')</a></li>';
     }
-    /* [NEW] END LOOP: for each tag in allTags: */
-
     /*[NEW] add HTML from allTagsHTML to tagList */
     authorsList.innerHTML = allAuthorsHTML;
   };
+
   generateAuthors();
 
   const authorClickHandler = function(event){
@@ -220,7 +218,7 @@
     }
     /* execute function "generateTitleLinks" with article selector as argument */
     generateTitleLinks('[data-author="' + author + '"]');
-  }
+  };
   
   const addClickListenersToAuthors = function(){
     /* find all links to authors */
@@ -230,5 +228,6 @@
       link.addEventListener('click', authorClickHandler);
     }
   };
+  
   addClickListenersToAuthors();
 }

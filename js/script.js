@@ -119,8 +119,6 @@
     const allTagsData = {tags: []};
 
     for(let tag in allTags){
-      const tagLinkHTML = templates.tagCloudLink;
-      console.log(tagLinkHTML);
       allTagsData.tags.push({
         tag: tag,
         count: allTags[tag],

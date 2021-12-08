@@ -119,7 +119,7 @@
     const allTagsData = {tags: []};
 
     for(let tag in allTags){
-      const tagLinkHTML ='<li>' + '<a class="' + calculateTagClass(allTags[tag], tagsParams) + '" href="#tag-' + tag + '" >' +  tag + '</a></li>';
+      const tagLinkHTML = templates.tagCloudLink;
       console.log(tagLinkHTML);
       allTagsData.tags.push({
         tag: tag,
